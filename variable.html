@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // ***** var 與let的差別 ******
+  // 1. 用var宣告
+  // function myFunc() {
+  //   console.log("my func():n1=", n1);// 'hello'
+  //   console.log("my func():this.n1=", this.n1); 'hello'
+  //   console.log("my func():window.n1=", window.n1); 'hello'
+  // }
+  // var n1 = "hello";
+  // myFunc();
+
+  // - 原因：
+  // 用 var 在主程式內宣告 n1，
+  // 會被視為 Global 變數，
+  // 將之存放在 Global Object 裡 (在 HTML 裡就是 window 物件)。
+
+  // 2. 用let宣告
+  function myFunc() {
+    console.log("my func():n1=", n1); //hello;
+    console.log("my func():this.n1=", this.n1);//undefined
+    console.log("my func():window.n1=", window.n1);//undefined
+  }
+  let n1 = "hello";
+  myFunc();
+  // - 原因：
+  // 使用 let 去宣告變數，
+  // 在執行時，主程式會被 JavaScript 包裝成一個 Function 去執行。
+  // n1 不是 Global 變數，不會被存放在 Global Object 裡，
+  // 也無法透過 window 物件去取得。
+  // 如下：
+  //   function MAIN(){
+  //     function myFunc() {
+  //       console.log("myFunc(): n1=", n1);
+  //       console.log("myFunc(): this.n1=", this.n1);
+  //       console.log("myFunc(): window.n1=", window.n1);
+  //     }
+
+  //     let n1 = "OneJar";
+  //     myFunc();
+  //     console.log("Main: n1=", n1);
+  // }
+
+  //  3.結論：
+  // --- let ---  
+  // - 支援block scope
+  // - 禁止同一block重複宣告變數(但同一block的子層可以)
+  // - 不會產生Global Scope變數
+
+  // --- const ---
+  // - 擁有let特性
+  // - 定義時需初始化
+  // - 後續不可改值
+
+  // 資料來源：https:ithelp.ithome.com.tw/articles/10203715
+
+
+
+
+
+</script>
