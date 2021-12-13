@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .list_item {
+        width: 100px;
+        height: 60px;
+        background-color: green;
+        margin: 10px;
+    }
+
+    .list_item_2 {
+        background-color: yellow;
+    }
+
+    .list_item_3 {
+        background-color: rgb(0, 81, 255);
+    }
+</style>
+
+<body>
+
+
+    <ul id="list">
+        <li id="list_item">
+            <a href="http://google.com" id="list_item_link">Google</a>
+        </li>
+    </ul>
+
+
+
+
+    <script>
+        // addEventListener，只是這函數其實有第三個參數，
+        // true代表把這個 listener 添加到捕獲階段，
+        // false或是沒有傳就代表把這個 listener 添加到冒泡階段。
+
+        const get = (id) => document.getElementById(id);
+        const $list = get('list');
+        const $list_item = get('list_item');
+        const $list_item_link = get('list_item_link');
+        $list.addEventListener('click', (e) => {
+            console.log('list capturing', e.eventPhase);
+        }, true)
+
+
+    </script>
+
+
+</body>
+
+</html>
