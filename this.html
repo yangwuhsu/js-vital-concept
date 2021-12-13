@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>this 觀念：
+        請看開發者工具</h1>
+
+    <script>
+        // 範例一：
+
+        // var foo = function () {
+        //     console.log('inside foo this', this);// window
+        //     console.log('this.count', this.count);// undefined
+        //     this.count++;
+        //     // 改成：
+        //     foo.count++;
+        //     console.log('foo.count', '1', '2', '3', '4', '5');
+        // }
+        // foo.count = 0;
+        // for (var i = 0; i < 5; i++) {
+        //     foo();
+        // }
+
+        // 範例二：
+        // var bar = function () {
+        //     console.log(this.a);
+        // }
+        // var foo = function () {
+        //     var a = 'hello';
+        //     this.bar();
+        // }
+        // foo();
+
+        // 重點：this 代表的是 function 執行時所屬的物件，而不是 function 本身。
+
+
+        // 範例三：
+        // var obj = {
+        //     func1: function () {
+        //         console.log('func1 this', this);
+        //         console.log(this === obj);
+        //         var func2 = function () {
+        //             console.log('func2', this);
+        //             console.log(this === obj);
+        //         }
+        //         func2();
+        //     }
+        // };
+        // obj.func1();
+
+        // 重點：
+        // 當沒有特定指明 this 的情況下，
+        // 預設綁定(Default Binding) this 為 「全域物件」，
+        // 也就是 window。因此在 func2 裡頭的 this，
+        // 若是沒有特別透過 call() 、 apply() 或是 bind() 來指定 this 的話，
+        // 那麼這裡的 this 就是 window。
+        // 注意：在 ES5 的嚴格模式下，會禁止 this 自動指定為全域物件，func2裡的this會變成undefined;
+
+        // 範例五：使用bind強制指定this
+        // 範例五 - A:
+        // var obj = {
+        //     x: 123
+        // }
+
+        // var func = function () {
+        //     console.log(this.x);
+        // }
+
+        // func();
+        // func.bind(obj)();
+
+        // 範例五 - B：
+
+        // 疑問：使用嚴格模式，為什麼this 印出來型別不一樣呢？
+        'use strict'
+        function foo(name) {
+            console.log('this', this); // 'hello'
+            console.log('name', name); //'fu'
+        }
+        foo.call('hello', 'fu');
+
+        // 不使用 use strict:
+        function foo(name) {
+            console.log('this', this);// String {'hello'}
+            console.log('name', name);//'fu'
+        }
+        foo.call('hello', 'fu');
+
+
+
+
+        // 範例六：箭頭函式與 this
+
+
+
+
+
+
+
+
+
+        // 參考文章：
+        // https://ithelp.ithome.com.tw/articles/10193193
+
+    </script>
+
+</body>
+
+</html>
